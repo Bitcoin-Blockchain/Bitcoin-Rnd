@@ -1,0 +1,34 @@
+
+To start Bitcoind :
+	Navigate to folder where  you installed bitcoind
+		cd ~/Gemini/BitCoin/Leve1/BitCoinD/bitcoin-0.14.1/bin
+
+	Run bitcoind in regtest network:
+		  bitcoind -regtest -daemon
+
+Bitcoind Commands:
+	
+	**For developer documentation : https://bitcoin.org/en/developer-examples
+	
+	To generate 101 blocks:
+		bitcoin-cli -regtest generate 101
+
+	To get wallet balance:
+		bitcoin-cli -regtest getbalance
+
+	To generate new address:
+		> bitcoin-cli -regtest getnewaddress
+
+	To generate  1 new address:
+		> bitcoin-cli -regtest generate 1
+
+	To assign shell variable
+		NEW_ADDRESS=mvbnrCX3bg1cDRUu8pkecrvP6vQkSLDSou
+
+	To use shell variable:
+		$NEW_ADDRESS
+
+	Send Bitcoins:
+		> bitcoin-cli -regtest sendtoaddress $NEW_ADDRESS 10.00
+
+

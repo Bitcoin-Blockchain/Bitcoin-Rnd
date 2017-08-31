@@ -1,0 +1,172 @@
+Q: Can POWs for same block be different?
+A: Yes. Actually if soltution requires that hash of (challange , proof) should contain 30 zeros, then any value of proof that produces 30 or more zeros is acceptable. 
+
+* Bitcoin netroks adjusts the difficulty level for every 2016 blocks. 
+
+* Bitcoin core listens on 8332 for Mainnet and 18832 for TestNet and RegTest. This can be modifies in bitcoin.conf
+
+How to make rpc calls using ARC?
+A: Url: http://localhost:8332
+	Header: Content-Type: text/plain
+	Raw Payload: 
+		{
+	    "method": "getblockhash",
+	    "params": [0],
+	    "id": "foo"
+		}
+	Enter username and password as listed in your bitcoin.conf
+	For body of calls refer to : https://bitcoin.org/en/developer-reference#remote-procedure-calls-rpcs
+
+Q: What are different uints of BTC?
+A: The main units are
+	1 BTC,
+	0.0001 mBTC ( 10^-3)
+	0.000001 uBTC (10^-6)
+	0.00000001 satoshi (1o^-8)
+
+*******************************************************************
+BITCOIN_CORE:
+
+Q: Why Bitcoind abd bitcoin-qt can't run together.
+A: because they read the same configuration file, and read and write the same data files. When one opens it locks these resources
+
+
+
+
+
+
+
+
+
+
+
+
+
+*******************************************************
+ELECTRUM:
+
+electrum sedd: basic glide can ramp card hungry actor feature park distance normal rich
+
+2factorAuth Wallet seed: swear length athlete maze panel clock boat tonight stick tragic enroll priority extended
+
+
+
+Muttisig Wallet seed: advice surround elbow vast nest novel tuition depend answer rack program uphold
+MAster public key of accn1 : xpub661MyMwAqRbcFk3jBW9fkBLg7g5RfWPAdGnzRR5wjfTNdp6ZVmcgwKBksfBCNM8YorJ4NTfTo4XvWAPrnFTWd5uGyyyGGTY6uiCRkcu2sFF
+(to be shared with other cosigners)
+
+Max 15 signers can be there in MUltiSig wallet
+
+
+
+wallet.create_new_address(False)- to create new address in electrum 
+
+To genetae n addresses:
+	for x in range(0, n):
+     print wallet.create_new_address(False)
+
+You can create a wallet with 2 factor authentication in Electrum.
+
+Freeze Account:
+When you freeze an address, the funds in that address will not be used for sending bitcoins. You can not send Bitcoins if you don’t have enough funds in the non-frozen addresses
+
+How to recover old wallet in electrum?
+A: Just rename the wallet whose password you forgot in ./electrum/Wallet.Dat and create a new wallet and electrum
+
+Does Electrum supports testNet?
+A: https://github.com/spesmilo/electrum/issues/21
+
+What does sweeping means?
+A: Sweeping private keys means to send all the bitcoins they control to an existing address in your wallet. The private keys you sweep do not become a part of your wallet. Instead, all the bitcoins they control are sent to an address that has been deterministically generated from your wallet seed.
+
+Electrum has option of bulk payment.
+
+Electrum offers two-factor-authentication.
+
+Electrum testNet Projects: 
+	https://github.com/wozz/electrum/tree/testnet
+	https://github.com/petrkr/electrum/tree/testnet
+
+
+
+
+
+	***********To run electrum testNet wallet***********
+
+	** From Prtrkr's fork:
+
+		git clone https://github.com/petrkr/electrum.git
+		git checkout testnet		
+		sudo python setup.py install
+		sudo apt-get install pyqt4-dev-tools ( not sure whethr this step is compulsary or not)
+		pyrcc4 icons.qrc -o gui/qt/icons_rc.py
+		./electrum 
+		Starts electrum in test-network
+
+		testnet seed: front border congress grief muscle income wreck demise base swallow trumpet split
+		password: front border congress grief muscle income wreck demise base swallow trumpet split
+		address: mksnZuZRqPttk9PSkcJEeyNCPCfRia7Tbx
+		tx address of recieving faucets:  f08f0f2ad6350e04b0ac054561b28288a99ebb2b14996aa4cd9deb81da690382
+		got fauctes from : https://testnet.manu.backend.hamburg/faucet
+
+
+	** From electrum main code:
+
+		else-- to run directly from electrum without needing Petrkr's fork:
+		git clone https://github.com/spesmilo/electrum.git
+		cd electrum
+		pyrcc4 icons.qrc -o gui/qt/icons_rc.py
+		./electrum --testnet
+
+
+		seed: power glue search stick skirt robust cute dance trim guilt ostrich speak
+		password: password
+		addreess: mvMgYHxLC4j3A2iGz6Lf3AW1gVTURFfSxa
+		Sent! TX ID: 82a09ba6a52a4328eb91624a91ec45b6887dd456750e57a7414fb849193034c1
+						5440ba61bb975a118e865381e7a28eba93321ebf1ff65bcb289eea1311f4d87f
+
+
+*******************************************************************************************
+
+HD-Wallets for BTC:
+1- Copay:
+	MultiSig-Yes
+	Desktop-Mobile Wallet
+
+2- Green Address:
+	Multi-Sig
+	Online-wallet
+
+3- MyCelium
+	HD
+	MultiSIg
+	FOr android only
+	Supports hardware wallets
+
+4- Armory
+	most secure
+	desktop wallet
+
+5- Bitcoin-core
+	desktop-wallet
+	slow speed
+	secure
+
+6- Electrum
+	most popular desktop wallet
+	Multisig
+
+7-MultiBit HD
+	supports HD.
+
+source of info: https://www.weusecoins.com/en/find-the-best-bitcoin-wallet/
+
+
+
+* copay is hd multisig wallet : https://www.bitcoin.com/choose-your-wallet/copay
+Gogs
+LDAP server
+
+***********************************************************************************
+
+Regarding security of electrum : https://www.reddit.com/r/Bitcoin/comments/2wqye5/has_the_privacy_problem_with_electrum_been/
